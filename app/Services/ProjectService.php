@@ -36,10 +36,19 @@ class ProjectService
     /*
     * Function : getAllProjects
     */
-    public function getAllProjects()
+    public function getAllProjects(?string $search = null, ?string $status = null, string $sortField = 'id', string $sortDirection = 'desc')
     {
-        return $this->projectRepository->getProjectQuery();
+        return $this->projectRepository->getProjectQuery($search, $status, $sortField, $sortDirection);
     }
+
+    /**
+     * Get counts grouped by status.
+     */
+    public function getStatusCounts(): array
+    {
+        return $this->projectRepository->getStatusCounts();
+    }
+
 
     /*
     * Function : updateProject

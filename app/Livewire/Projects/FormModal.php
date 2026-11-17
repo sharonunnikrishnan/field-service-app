@@ -40,17 +40,16 @@ class FormModal extends Component
     }
 
     /*
-    * Function : Save Project
-    */
+     * Function : Save Project
+     */
     public function saveProject(ProjectService $projectService)
     {
         #Validating form here
-        $validatedProjectRequest =  $this->validate();
+        $validatedProjectRequest = $this->validate();
 
-        if($this->projectId) {
+        if ($this->projectId) {
             $projectService->updateProject($this->projectId, $validatedProjectRequest);
-        }
-        else{
+        } else {
             $projectService->saveProject($validatedProjectRequest);
         }
 
@@ -71,15 +70,12 @@ class FormModal extends Component
     {
         $this->isView = $mode === 'view';
 
-        if($mode === 'create')
-        {
-            $this->isView = 'false';
+        if ($mode === 'create') {
+            $this->isView = false;
             $this->projectId = null;
             $this->existingImage = null;
             $this->reset();
-        }
-        else
-        {
+        } else {
             $this->projectId = $project['id'];
             $this->name = $project['name'];
             $this->description = $project['description'];
